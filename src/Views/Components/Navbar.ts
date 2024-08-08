@@ -1,3 +1,6 @@
+import Swal from "sweetalert2";
+import { Logout } from "../../Controllers/Guardian";
+
 // COMPONENTE NAVBAR 
 export const Navbar = (): HTMLElement => {
 
@@ -24,7 +27,7 @@ export const Navbar = (): HTMLElement => {
     span.innerText = "Data Laker"
 
     const ul = document.createElement("ul") as HTMLUListElement;
-    ul.classList.add("nav",  "nav-underline");
+    ul.classList.add("nav", "nav-underline");
     ul.innerHTML = `
 
     <li class="nav-item">
@@ -38,8 +41,14 @@ export const Navbar = (): HTMLElement => {
     </li>
     `
     const logout = ul.querySelector("#logout") as HTMLAnchorElement;
-    logout.addEventListener("click", ()=>{
-        sessionStorage.removeItem("email");
+    logout.addEventListener("click", () => {
+        Swal.fire({
+            title: "Hasta pronto ",
+            icon: "success"
+        });
+
+        Logout()
+        
     })
 
     a.append(img, span)

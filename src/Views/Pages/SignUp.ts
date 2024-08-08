@@ -4,19 +4,24 @@ import { IRequestUser } from "../../Models/IUser";
 import "../Pages/styles/style.css";
 
 
-export const FormSignUp = (): HTMLElement => {
+export const SignUp = (): HTMLElement => {
     // MAIN DE LA VISTA DEL REGISTRAR USUARIO
     const main = document.createElement("main") as HTMLElement;
-    main.className = "container";
+    main.className = " signUp-main container";
 
     //SECCIÓN CONTENEDORA DEL FORMULARIO DE REGISTRO
     const section = document.createElement("section") as HTMLElement;
     section.classList.add("signUp", "container", "mt-5");
 
 
-    const h1 = document.createElement("h1") as HTMLHeadElement;
-    h1.innerText = "Bienvenido ";
+    // TITULO DE VISTA
+    const h1 = document.createElement("h1") as HTMLElement;
+    h1.innerText = "Registrate ";
     h1.className = " text-center"
+
+
+    const p = document.createElement("p") as HTMLParagraphElement;
+    p.innerText = "Pronto te unirás a nosotros"
 
     //Formulario
     const form = document.createElement("form") as HTMLFormElement;
@@ -53,7 +58,7 @@ export const FormSignUp = (): HTMLElement => {
     form.append(emailInput, passwordInput, confirmPassword, button)
 
     // Agregando titulo y formulario a sección
-    section.append(h1, form)
+    section.append(h1,p, form)
 
     // Agregando la sección al main 
     main.append(section)
@@ -70,7 +75,7 @@ export const FormSignUp = (): HTMLElement => {
 
             const userController = new UserController(url)
             try {
-                const responseNewUser = await userController.createUser("users/register", newUser)
+                const responseNewUser = await userController.CreateUser("users/register", newUser)
                 console.log(responseNewUser);
                 window.location.href = "/";
 

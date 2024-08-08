@@ -1,7 +1,4 @@
-import { FormSignUp } from "./Views/Pages/SignUp"
-import { Navbar } from "./Views/Components/Navbar"
+import { App } from "./App";
 
-const app = document.querySelector("#app") as HTMLElement
-
-app.append(Navbar())
-app.append(FormSignUp())
+document.addEventListener("DOMContentLoaded", App);
+window.addEventListener("hashchange", App)

@@ -7,7 +7,7 @@
     font-family: "Roboto", sans-serif;
 }
 
-.signUp{
+.signUp , .login-section{
     display: flex;
     flex-direction: column;
     justify-content: center;

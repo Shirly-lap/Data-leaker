@@ -14,3 +14,18 @@
     align-items: center;
 }
 
+.cardsContainer-home{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+}
+
+.card{
+    width: 40vh;
+    
+}
+
+.form-control{
+    display: inline-block;
+    width: 25%;
+}

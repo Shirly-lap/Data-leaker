@@ -1,7 +1,7 @@
-import { IPost } from "../../Models/IPost";
+import {IResponsePost } from "../../Models/IPost";
 
-export const createCard = (post: IPost): HTMLElement => {
-    let { title, body, creationDate, status, platform, postUrl } = post;
+export const createCard = (post: IResponsePost): HTMLElement => {
+    let { id, title, body, creationDate, status, platform, postUrl, estimatedPublicationDate } = post;
 
     const card = document.createElement('div') as HTMLElement;
     card.className = "card text-center ";
@@ -15,18 +15,38 @@ export const createCard = (post: IPost): HTMLElement => {
 
     const cardTitle = document.createElement("h5") as HTMLElement;
     cardTitle.className = "card-title";
-    cardTitle.innerText = status;
+    cardTitle.innerText = `Estado: ${status}`;
 
-    const cardText = document.createElement("p") as HTMLElement;  // Changed to <p> for better formatting
-    cardText.className = "card-text";
-    cardText.innerText = `${body} ${platform} ${postUrl}`;  // Correct concatenation
+    const textBody = document.createElement("p") as HTMLParagraphElement; 
+    textBody.innerText = body
 
-    const viewMore = document.createElement("a") as HTMLAnchorElement;
-    viewMore.className = "btn btn-primary";
-    viewMore.href = postUrl;  // Assuming you want to link to postUrl
-    viewMore.innerText = "Ver más";
+    const cardText = document.createElement("div") as HTMLElement;  
+    cardText.className = "card-text"; 
 
-    bodyCard.append(cardTitle, cardText, viewMore);
+    const textPlataform = document.createElement("a") as HTMLAnchorElement; 
+    textPlataform.innerText = `Plataforma:  ${platform}`;
+    textPlataform.href = platform
+
+    const imgPostUrl = document.createElement("img") as HTMLImageElement; 
+    imgPostUrl.src = postUrl;
+    imgPostUrl.alt = "imgPost"
+    imgPostUrl.className = "card-img-top"
+
+    cardText.append(textBody,textPlataform, imgPostUrl)
+
+
+    const btnEdit = document.createElement("button") as HTMLButtonElement;
+    btnEdit.className = "btn btn-primary m-1" ;
+    btnEdit.innerText = "Editar";
+    btnEdit.dataset.id = id;
+
+    const btnDelete = document.createElement("button") as HTMLButtonElement;
+    btnDelete.className = "btn btn-danger";
+    btnDelete.innerText = "Eliminar";
+    btnDelete.dataset.id = id;
+
+
+    bodyCard.append(cardTitle, cardText, btnEdit, btnDelete);
 
     const cardFooter = document.createElement('div') as HTMLElement;
     cardFooter.className = "card-footer text-muted";

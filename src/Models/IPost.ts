@@ -1,5 +1,6 @@
 
 export interface IPost {
+    // id:                       string;
     title:                    string;
     body:                     string;
     creationDate:             Date;
@@ -14,7 +15,7 @@ export interface IPost {
 }
 
 export interface IResponsePost {
-    id:                       number;
+    id:                       string;
     postByUser:               number;
     title:                    string;
     body:                     string;
@@ -28,3 +29,4 @@ export interface IResponsePost {
     multimediaUrl:            string;
     deletedAt:                null;
 }
+
